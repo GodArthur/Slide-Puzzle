@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <link type="type/css" rel="stylesheet" href="style/style.css">
-        <link type="type/css" rel="stylesheet" href="style/tabs.css">
+        <link type="text/css" rel="stylesheet" href="style/style.css">
+        <link type="text/css" rel="stylesheet" href="style/tabs.css">
         <script type="text/javascript" src="js/puzzle.js"></script>
         <script type="text/javascript" src="js/tabs.js"></script>
     </head>
@@ -32,7 +32,14 @@
                                     <label for="pName">Player Name</label>
                                     <input type="text" id="pName" name="pName">
                                     <label for="pDim">Puzzle Dimension</label>
-                                    <input type="text" id="pDim" name="pDim">
+                                    
+                                    <select id="pDim">
+
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+
+                                    </select>
 
                                     <button>Play Now</button>
                                     <button>Cancel Now</button>
@@ -44,7 +51,14 @@
                                 <legend>Game Progress</legend>
                                 <section>
                                     
-                                    
+                                    <label for="movies">Movies</label>
+                                    <input type="text" name="movies" id="movies">
+                                    <label for="sec">Sec</label>
+                                    <input type="text" name="sec" id="sec">
+                                    <label for="min">Min</label>
+                                    <input type="text" name="min" id="min">
+                                    <label for="hrs">Hrs</label>
+                                    <input type="text" name="hrs" id="hrs">
 
                                 </section>
                             </fieldset>
@@ -55,6 +69,20 @@
 
 
                 </form>
+
+            </div>
+
+            <div>
+
+                <table>
+                    <caption>Player Stats</caption>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Dim</th>
+                    <th>Status</th>
+                    <th>Moves</th>
+                    <th>Dur(s)</th>
+                </table>
 
             </div>
 
