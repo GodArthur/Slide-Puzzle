@@ -1,1 +1,103 @@
-<!-- HTML DOCUMENT-->
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <link type="text/css" rel="stylesheet" href="style/style.css">
+        <link type="text/css" rel="stylesheet" href="style/tabs.css">
+        <script type="text/javascript" src="js/puzzle.js"></script>
+        <script type="text/javascript" src="js/tabs.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                My Puzzle Game
+            </h1>
+        </header>
+
+        <section id="leftSection">
+            <!-- Tab Links -->
+            <button> Player Info </button>
+            <button> Game Stats </button>
+            <!-- Tab content -->
+            <div>
+                
+                <form>
+                    <h3>Game Setup</h3>
+
+                    <section>
+
+                            <fieldset>
+
+                                <legend>Game Settings</legend>
+                                <section>
+                                    <label for="pName">Player Name</label>
+                                    <input type="text" id="pName" name="pName">
+                                    <label for="pDim">Puzzle Dimension</label>
+                                    
+                                    <select id="pDim">
+
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+
+                                    </select>
+
+                                    <button>Play Now</button>
+                                    <button>Cancel Now</button>
+                                </section>
+
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Game Progress</legend>
+                                <section>
+                                    
+                                    <label for="movies">Movies</label>
+                                    <input type="text" name="movies" id="movies">
+                                    <label for="sec">Sec</label>
+                                    <input type="text" name="sec" id="sec">
+                                    <label for="min">Min</label>
+                                    <input type="text" name="min" id="min">
+                                    <label for="hrs">Hrs</label>
+                                    <input type="text" name="hrs" id="hrs">
+
+                                </section>
+                            </fieldset>
+
+                    </section>
+
+                    <label for="Game Progress"></label>
+
+
+                </form>
+
+            </div>
+
+            <div>
+
+                <table>
+                    <caption>Player Stats</caption>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Dim</th>
+                    <th>Status</th>
+                    <th>Moves</th>
+                    <th>Dur(s)</th>
+                </table>
+
+            </div>
+
+        </section>
+
+        <section id="middleSection">
+            <div id="checkBoardId">
+
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                Copyright 2019 Fed and Kojo
+            </p>
+        </footer>
+    </body>
+</html>
