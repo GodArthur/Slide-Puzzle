@@ -1,0 +1,66 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+
+    height: 100%;
+}
+
+header, footer{
+
+    height: 15%;
+}
+
+#greenButton{
+
+    background-color: #4CAF50;
+}
+
+#blueButton{
+    
+    background-color: #008CBA;
+}
+#redButton{
+    
+    background-color: #f44336;
+}
+
+#disabledButton{
+    
+    background-color: #e7e7e7;   
+}
+
+
+#checkerBoardId{
+
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+
+.puzzleBoard{
+
+    margin: 1px;
+    border-style: solid, black;
+    border-width: 3px; 
+}
+
+
+.filledTile, .emptyTile{
+
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #77B3ED;
+    border-style: 2px, solid, #404c50;
+    color: white;
+    font-weight: bold;
+}
+
+.emptyTile{
+
+    background-color: #afd9ec;
+    color: #afd9ec;
+}
