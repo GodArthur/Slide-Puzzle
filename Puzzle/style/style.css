@@ -2,14 +2,94 @@
     padding: 0;
     margin: 0;
 }
-body{
+body, html{
 
     height: 100%;
+    width: 100%;
 }
 
 header, footer{
 
     height: 15%;
+    background-color: #aed6f1; 
+    border-style: solid;
+    border-color:  #d7bde2;
+}
+
+h1{
+    
+    position: absolute;
+    right: 40%;
+    bottom: 0%;
+}
+
+header{
+    position: relative;
+}
+
+legend{
+
+    font-size: 1.2em;
+    color: #09384e;
+    font-weight: bold;
+}
+
+label{
+    width: 40%;
+    margin: 2px;
+}
+form{
+    padding-top: 10px;
+    margin: 10px;
+}
+
+#gameContent{
+    
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+}
+
+#leftSection, #middleSection{
+    
+    border-style: solid;
+    border-color: darkcyan;
+    border: 2px; 
+    height: 100%;
+}
+
+#leftSection{
+    background-color:  #aed6f1;
+    width: 30%;
+    border-style: solid;
+    border-color:  #424949 ;
+    border-bottom-width: 6px;
+}
+
+#tab{
+    
+    background-color: white;
+    height: 10%;
+    overflow: hidden; 
+    
+}
+
+#progressContainer{
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#progressLabels, #progressInputs{
+
+    display: flex;
+    flex-direction: row;
+}
+
+#middleSection{
+    
+    height: 100%;
+    width: 70%;
 }
 
 #greenButton{
@@ -39,6 +119,24 @@ header, footer{
     height: 100%;
 }
 
+.tablinks{
+
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: inherit;
+    height: 100%;
+    margin: 0;
+    
+    
+}
+
+.progressInput{
+
+    margin: 5px;
+    width: 10px;
+}
 
 .puzzleBoard{
 

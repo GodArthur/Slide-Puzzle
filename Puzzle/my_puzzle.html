@@ -12,88 +12,94 @@
                 My Puzzle Game
             </h1>
         </header>
+        <section id = "gameContent">
+            <section id="leftSection">
+                <!-- Tab Links -->
+                <div id = "tab">
+                    <button class="tablinks"> Player Info </button>
+                    <button class="tablinks"> Game Stats </button>
+                </div>
+                <!-- Tab content -->
+                <div>
+                    
+                    <form>
+                        <h3>Game Setup</h3>
 
-        <section id="leftSection">
-            <!-- Tab Links -->
-            <button> Player Info </button>
-            <button> Game Stats </button>
-            <!-- Tab content -->
-            <div>
-                
-                <form>
-                    <h3>Game Setup</h3>
+                        <section>
 
-                    <section>
+                                <fieldset>
 
-                            <fieldset>
+                                    <legend>game info/Settings</legend>
+                                    <section>
+                                        <label for="pName">Player Name</label>
+                                        <input type="text" id="pName" name="pName">
+                                        <br><label for="pDim">Puzzle Dimension</label>
+                                        
+                                        <select id="pDim">
 
-                                <legend>Game Settings</legend>
-                                <section>
-                                    <label for="pName">Player Name</label>
-                                    <input type="text" id="pName" name="pName">
-                                    <label for="pDim">Puzzle Dimension</label>
-                                    
-                                    <select id="pDim">
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
 
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                        </select>
+                                        <br>
+                                        <button>Play Now</button>
+                                        <button>Cancel Now</button>
+                                    </section>
 
-                                    </select>
+                                </fieldset>
 
-                                    <button>Play Now</button>
-                                    <button>Cancel Now</button>
-                                </section>
+                                <fieldset>
+                                    <legend>Game Progress</legend>
+                                    <section id = "progressContainer">
+                                        <div id = progressLabels>
+                                            <label for="moves">Moves</label>
+                                            <label for="sec">Sec</label>
+                                            <label for="min">Min</label>
+                                            <label for="hrs">Hrs</label>
+                                        </div>
+                                        <div id = progressInputs>
+                                            <input class = "progessInput" type="text" name="moves" id="moves">
+                                            <input class = "progessInput" type="text" name="sec" id="sec">
+                                            <input class = "progessInput" type="text" name="min" id="min">
+                                            <input class = "progessInput" type="text" name="hrs" id="hrs">
+                                        </div>
+                                    </section>
+                                </fieldset>
 
-                            </fieldset>
+                        </section>
 
-                            <fieldset>
-                                <legend>Game Progress</legend>
-                                <section>
-                                    
-                                    <label for="movies">Movies</label>
-                                    <input type="text" name="movies" id="movies">
-                                    <label for="sec">Sec</label>
-                                    <input type="text" name="sec" id="sec">
-                                    <label for="min">Min</label>
-                                    <input type="text" name="min" id="min">
-                                    <label for="hrs">Hrs</label>
-                                    <input type="text" name="hrs" id="hrs">
-
-                                </section>
-                            </fieldset>
-
-                    </section>
-
-                    <label for="Game Progress"></label>
+                        <label for="Game Progress"></label>
 
 
-                </form>
+                    </form>
 
-            </div>
+                </div>
 
-            <div>
+                <div>
 
-                <table>
-                    <caption>Player Stats</caption>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Dim</th>
-                    <th>Status</th>
-                    <th>Moves</th>
-                    <th>Dur(s)</th>
-                </table>
+                    <table>
+                        <caption>Player Stats</caption>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Dim</th>
+                        <th>Status</th>
+                        <th>Moves</th>
+                        <th>Dur(s)</th>
+                    </table>
 
-            </div>
+                </div>
 
+            </section>
+         
+
+            <section id="middleSection">
+                <div id="checkBoardId">
+                    <p>HI</p>
+
+                </div>
+            </section>
         </section>
-
-        <section id="middleSection">
-            <div id="checkBoardId">
-
-            </div>
-        </section>
-
         <footer>
             <p>
                 Copyright 2019 Fed and Kojo
