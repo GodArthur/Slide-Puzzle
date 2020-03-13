@@ -20,12 +20,12 @@
                     <button class="tablinks"> Game Stats </button>
                 </div>
                 <!-- Tab content -->
-                <div>
+                <div id="playerInfo">
                     
                     <form>
                         <h3>Game Setup</h3>
 
-                        <section>
+                        <section id="setupSection">
 
                                 <fieldset>
 
@@ -52,17 +52,17 @@
                                 <fieldset>
                                     <legend>Game Progress</legend>
                                     <section id = "progressContainer">
-                                        <div id = progressLabels>
+                                        <div id = "progressLabels">
                                             <label for="moves">Moves</label>
                                             <label for="sec">Sec</label>
                                             <label for="min">Min</label>
                                             <label for="hrs">Hrs</label>
                                         </div>
-                                        <div id = progressInputs>
-                                            <input class = "progessInput" type="text" name="moves" id="moves">
-                                            <input class = "progessInput" type="text" name="sec" id="sec">
-                                            <input class = "progessInput" type="text" name="min" id="min">
-                                            <input class = "progessInput" type="text" name="hrs" id="hrs">
+                                        <div id = "progressInputs">
+                                            <input class = "progressInput" type="text" name="moves" id="moves">
+                                            <input class = "progressInput" type="text" name="sec" id="sec">
+                                            <input class = "progressInput" type="text" name="min" id="min">
+                                            <input class = "progressInput" type="text" name="hrs" id="hrs">
                                         </div>
                                     </section>
                                 </fieldset>
@@ -76,9 +76,9 @@
 
                 </div>
 
-                <div>
+                <div id="gameStats">
 
-                    <table>
+                    <table id="tableStats">
                         <caption>Player Stats</caption>
                         <th>#</th>
                         <th>Name</th>

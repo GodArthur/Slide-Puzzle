@@ -1,6 +1,8 @@
 *{
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
+	box-sizing: border-box;
+	position: relative;
 }
 body, html{
 
@@ -14,6 +16,7 @@ header, footer{
     background-color: #aed6f1; 
     border-style: solid;
     border-color:  #d7bde2;
+
 }
 
 h1{
@@ -48,6 +51,7 @@ form{
     height: 70%;
     display: flex;
     flex-direction: row;
+	width: 100%;
 }
 
 #leftSection, #middleSection{
@@ -64,6 +68,7 @@ form{
     border-style: solid;
     border-color:  #424949 ;
     border-bottom-width: 6px;
+	position: relative;
 }
 
 #tab{
