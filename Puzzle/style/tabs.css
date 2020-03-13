@@ -1,0 +1,27 @@
+/*#playerInfo, #setupSection, #progressContainer, fieldset, fieldset section, .progressInputs, form
+{
+	width: 100%;
+}
+*/
+.progressInput
+{
+	width: 20%;
+}
+#playerInfo
+{
+	display:none;
+}
+
+#gameStats
+{
+	margin: 10px;
+	width: 100%;
+}
+
+
+table.tableStats
+{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
