@@ -44,6 +44,7 @@ label{
 form{
     padding-top: 10px;
     margin: 10px;
+    height: 100%;
 }
 
 #gameContent{
@@ -79,17 +80,55 @@ form{
     
 }
 
+
+
+#playerInfo{
+
+    height: 60%;
+}
+
+#setupSection{
+
+    height: 100%;
+}
+
+#playBtn, #cancelBtn{
+
+    display: inline-block;
+    height: 45px;
+    width: 100px;
+    
+}
+
+#playBtn{
+
+    
+}
+
+#infoForm{
+
+    height: 40%;
+}
+#progressForm{
+
+    height: 30%;
+}
 #progressContainer{
 
-    display: flex;
-    flex-wrap: wrap;
+    height: 100%;    
 }
 
-#progressLabels, #progressInputs{
+#input1, #input2, #input3, #input4{
 
-    display: flex;
-    flex-direction: row;
+    display: inline-block;
+    width: 10%;
+    margin-left: 20px;
+    
 }
+
+
+
+
 
 #middleSection{
     

@@ -9,7 +9,7 @@
 }
 #playerInfo
 {
-	display:none;
+	
 }
 
 #gameStats
@@ -24,4 +24,5 @@ table.tableStats
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
+	
 }
