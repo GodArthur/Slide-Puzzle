@@ -100,8 +100,9 @@ form{
     
 }
 
-#playBtn{
+#playBtn, #cancelBtn{
 
+    disabled: true;
     
 }
 
