@@ -1,10 +1,13 @@
 
-//Utilities
-var listPlayerArr = [];
+
+var util;
+var pManager;
 
 
-startTimer()
+function startTimer()
 {
+
+    document.querySelector('h1').innerHTML = "Bro";
     let sec = document.getElementById("input2").value;
     let min = document.getElementById("input3").value;
     let hr = document.getElementById("input4").value;
@@ -15,10 +18,6 @@ startTimer()
     {
         min ++;
         sec = 0;
-    }
-    else
-    {
-        sec++;
     }
     
     if (min > 59)
@@ -33,12 +32,15 @@ startTimer()
 }
 
 
+
+
 //utility object
 function Utility()
 {
-    this.generateRandomNumber = function (minValue, maxValue)
+    this.generateRandomNumber = function(minValue, maxValue)
     {
         var randNum = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+        console.log(randNum);
         return randNum;
     };
 
@@ -79,41 +81,56 @@ function Utility()
         document.getElementById("cancelBtn").disabled = true;
     };
 
+    this.enableButton = function (btnId, theStatus, btnClass)
+    {
+        
+        btnId.disabled = theStatus;
+        btnId.style.backgroundColor = btnClass;
+        btnId.style.color = "white";
+    };
+
 
     this.checkFormFilled = function()
     {
+        
+        
+
         var usr = document.getElementById("pName");
         var list = document.getElementById("pDim");
-        var playButton = document.getElementById("playBtn")
+        var playButton = document.getElementById("playBtn");
+
     
-        if (usr.value.Length == 0 || list.selectedIndex == 0)
+        if (usr.value == "" || list.selectedIndex == 0)
         {
+            document.querySelector('h1').innerHTML = "reached"; 
             //disable and turn button grey
-            enableButton(playButton, true, "d3d3d3");
+           util.enableButton(playButton, true, "gray");
+           
         }
         else
         {
-            enableButton(playButton, false, "green");
+            util.enableButton(playButton, false, "#49E20E");
         }
     };
 
 
-    this.enableButton = function enableButton(btnId, theStatus, btnClass)
-    {
-        btnId.style.backgroundColor = btnClass;
-        btnId.disabled = theStatus;
-    };
-
+   
 
     this.showChrono = function()
     {
-        var myVar = setInterval(setTimer, 1000);
+        util.initTime();
+        var myVar = setInterval(startTimer, 1000);
     };
 
+    this.test = function ()
+    {
+        document.querySelector('h1').innerHTML = "IT WORKS";
+    }
 
-    this.showStats = showStats;
 
-    this.initTime = initTime()
+    this.showStats = 0;
+
+    this.initTime = function()
     {
         document.getElementById("input2").value = 0;
         document.getElementById("input3").value = 0;
@@ -122,13 +139,11 @@ function Utility()
 }
 
 
-
 //Player object
 function Player(name, dimension, nberMoves, gameduration)
 {
-    this
+    //this
 }
-
 
 
 
@@ -138,6 +153,7 @@ function storeGameStats(theStatus)
 
 }
 
+
 function PlayerManager(gameCounter, gameDuration, nberMoves)
 {
     this.listPlayers = [];
@@ -145,21 +161,6 @@ function PlayerManager(gameCounter, gameDuration, nberMoves)
     this.gameDuration = gameDuration;
     this.nberMoves = nberMoves;
 }
-
-
-var utility;
-
-function init()
-{
-    utility = new Utility();
-    var pManager = new PlayerManager(0, 0, 0);
-    document.getElementById("pName").addEventListener('onBlur', checkFormFilled);
-    document.getElementById("pDim").addEventListener('onBlur', checkFormFilled);
-    document.getElementById("playBtn").addEventListener('onClick', mainProgram);
-}
-
-
-document.addEventListener('DOMContentLoaded', init);
 
 
 
@@ -233,8 +234,28 @@ function PuzzleGame()
     this.getNeighboursIndicesArr = function(arrayIndices)
     {
         var neighbouringTiles = [];
-        if(neighbouring )
+        //if(neighbouring )
     }
 }
 
 
+function mainProgram()
+{
+    util.enableButton(document.getElementById("cancelBtn"), false, "red");
+    util.showChrono();
+}
+
+
+function init()
+{
+    util = new Utility();
+    //document.querySelector('h1').innerHTML = "BYE";
+    //pManager = new PlayerManager(0, 0, 0);
+    document.getElementById("pName").addEventListener('blur', util.checkFormFilled);
+    document.getElementById("pDim").addEventListener('mouseup', util.checkFormFilled);
+    document.getElementById("playBtn").addEventListener('click', mainProgram);
+    //document.getElementById("cancelBtn").addEventListener("click", utility.cancelPuzzlePlay);
+}
+
+
+document.addEventListener('DOMContentLoaded', init);
