@@ -1,4 +1,5 @@
 
+//Utilities
 var listPlayerArr = [];
 
 
@@ -146,11 +147,11 @@ function PlayerManager(gameCounter, gameDuration, nberMoves)
 }
 
 
-
+var utility;
 
 function init()
 {
-    var utility = new Utility();
+    utility = new Utility();
     var pManager = new PlayerManager(0, 0, 0);
     document.getElementById("pName").addEventListener('onBlur', checkFormFilled);
     document.getElementById("pDim").addEventListener('onBlur', checkFormFilled);
@@ -159,4 +160,81 @@ function init()
 
 
 document.addEventListener('DOMContentLoaded', init);
+
+
+
+//Tile Object Constructor
+function Tile(row, col, tileType, indexNumber)
+{
+    this.row = row;
+    this.col = col;
+    this.tileType = tileType;
+    this.indexNumber = indexNumber;
+}
+//PuzzleGame Object Constructor
+
+function PuzzleGame()
+{
+    this.puzzleWidth;
+    this.puzzleBoard = [];
+    this.goalState = [];
+    this.createGoalState = function()
+    {
+        for(var i = 1; i < (this.puzzleWidth * this.puzzleWidth) - 1; i++)
+        {
+            this.goalState.push(i);
+        }
+        this.goalState.push(0);
+    };
+
+    //This is for setting the board structure for the game using random numbers
+    this.createBoardStructure = function()
+    {
+        for(var i = 0; i < (this.puzzleWidth * this.puzzleWidth); i++)
+        {
+            var tempNum = utility.generateRandomNumber(0 , (this.puzzleWidth * this.puzzleWidth) - 1);
+            if(!puzzleBoard.contains(tempNum))
+            {
+                this.puzzleBoard.push(tempNum);
+            }
+            else
+            {
+                i--;
+            }
+        }
+    };
+
+    //This is for drawing the game on the div
+
+
+    //This is for swapping two tiles during the game
+    this.swap2Tiles = function(indexTile1, indexTile2)
+    {
+        var tempTile = this.puzzleBoard(indexTile1);
+        this.puzzleBoard(indexTile1) = this.puzzleBoard(indexTile2);
+        this.puzzleBoard(indexTile2) = tempTile;
+    };
+
+    //This is for seeing if two tile states match
+    this.match2States = function(state1, state2)
+    {
+        var isSame = true;
+        for(var i = 0; i < state1.length; i++)
+        {
+            if(!(state1[i].indexNumber == state2[i].indexNumber))
+            {
+                isSame = false;
+            }
+        }
+        return isSame;
+    };
+
+    //This is for getting the neighbouring indices array
+    this.getNeighboursIndicesArr = function(arrayIndices)
+    {
+        var neighbouringTiles = [];
+        if(neighbouring )
+    }
+}
+
 
