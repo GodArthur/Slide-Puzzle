@@ -52,6 +52,9 @@ function Utility()
     //plays the audio based on a win or a wrong move
     this.playAudio = function()
     {
+        document.getElementById("winMove").play();
+
+        document.getElementById("wrongMove").play();
         //plays audio based on an unfully understood condition
     };
 
@@ -75,6 +78,8 @@ function Utility()
 
         util.enableButton(document.querySelector("#playBtn"), true, "#F0F0F0");
         util.enableButton(document.querySelector("#cancelBtn"), true, "#F0F0F0");
+        document.querySelector("#pName").readOnly = false;
+        document.querySelector("#pDim").disabled = false;
     };
 
 
@@ -121,6 +126,7 @@ function Utility()
         }
         else
         {
+            //enable and turn green
             util.enableButton(playButton, false, "#49E20E");
         }
     };
@@ -276,16 +282,11 @@ function PuzzleGame()
 
 
 
-
-function test()
-{
-    document.querySelector('h1').innerHTML = "test reached";
-}
-
-
-
 function mainProgram()
 {
+    document.getElementById("pName").readOnly = true;
+    document.getElementById("pDim").disabled = true;
+
     util.enableButton(document.getElementById("cancelBtn"), false, "red");
     util.showChrono();
 }
@@ -295,12 +296,12 @@ function init()
 {
     util = new Utility();
     pManager = new PlayerManager(0, 0, 0);
-    //pManager = new PlayerManager(0, 0, 0);
+
     document.getElementById("pName").addEventListener('blur', util.checkFormFilled);
     document.getElementById("pDim").addEventListener('mouseup', util.checkFormFilled);
     document.getElementById("playBtn").addEventListener('click', mainProgram);
     document.getElementById("cancelBtn").addEventListener('click', util.cancelPuzzlePlay);
-    document.getElementById('middleSection').addEventListener('click', util.showStats)
+    document.getElementById('middleSection').addEventListener('click', util.showStats);
 }
 
 
