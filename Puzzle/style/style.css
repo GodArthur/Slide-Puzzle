@@ -96,15 +96,12 @@ form{
 
     display: inline-block;
     height: 45px;
-    width: 100px;
-    
+    width: 120px;
+    border: none;
+    text-align: center;
+    background-color: "gray";
 }
 
-#playBtn, #cancelBtn{
-
-    disabled: true;
-    
-}
 
 #infoForm{
 
