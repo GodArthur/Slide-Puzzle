@@ -47,6 +47,11 @@ form{
     height: 100%;
 }
 
+audio{
+
+    display: none;
+}
+
 #gameContent{
     
     height: 70%;
