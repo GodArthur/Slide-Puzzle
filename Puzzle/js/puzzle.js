@@ -7,7 +7,7 @@ var mainGame;
 //timer variable
 var t;
 
-//original disalbed btn text color
+//original disabled btn text color
 var btnTxtClr = document.getElementById("playBtn").style.color;
 
 //Method increments timer
@@ -51,20 +51,26 @@ function Utility()
     };
 
     //plays the audio based on a win or a wrong move
-    this.playAudio = function()
+    this.playAudio = function(condition)
     {
-        document.getElementById("winMove").play();
+        if(condition)
+        {
+            document.getElementById("winMove").play();
+        }
+        else
+        {
+            document.getElementById("wrongMove").play();
+        }
 
-        document.getElementById("wrongMove").play();
         //plays audio based on an unfully understood condition
     };
 
 
-    this.sampleEasyBoardTests = function()
+    this.sampleEasyBoardTests = function(puzzleWidth)
     {
         if (puzzleWidth == 3)
         {
-            return new Array[[1,2,3], [4,0,6], [7,5,8]];
+            return [[1,2,3], [4,0,6], [7,5,8]];
         }
     };
 
@@ -231,16 +237,29 @@ function PuzzleGame(puzzleWidth)
             var tempArray = [];
             for(var j = 0; j < this.puzzleWidth; j++)
             {
-                tempArray.push(new Tile(i, j, tileNumber, (i * this.puzzleWidth) + j));
+                if(tileNumber == 9)
+                {
+                    tempArray.push(new Tile(this.puzzleWidth, this.puzzleWidth, 0, (this.puzzleWidth * this.puzzleWidth) - 1));
+                }
+                else
+                {
+                    tempArray.push(new Tile(i, j, tileNumber, (i * this.puzzleWidth) + j));
+                    tileNumber++;
+                }
+
             }
             this.goalState.push(tempArray);
         }
-        this.goalState[this.puzzleWidth - 1].push(new Tile(this.puzzleWidth, this.puzzleWidth, 0, (this.puzzleWidth * this.puzzleWidth) - 1));
+       
+        
+       
     };
 
     //This is for setting the board structure for the game using random numbers
     this.createBoardStructure = function()
     {
+        //This is the functioning board Structure
+        /*
         //Current tile tracks the tile the loop is on, usedNumbers tracks which numbers are used
         var currentTile = 0;
         var usedNumbers = [];
@@ -264,6 +283,20 @@ function PuzzleGame(puzzleWidth)
             this.puzzleBoard.push(tempArray);
             
         }
+        */
+       //For testing purposes only
+       var testArray = util.sampleEasyBoardTests(3);
+       var indexFlag = 0;
+       for(var i = 0; i < this.puzzleWidth; i++)
+       {
+           var tempArray = [];
+           for(var j = 0; j < this.puzzleWidth; j++)
+           {
+               tempArray.push(new Tile(i, j, testArray[i][j], indexFlag));
+               indexFlag++;
+           }
+           this.puzzleBoard.push(tempArray);
+       }
     };
 
     //This is for drawing the game on the div
@@ -326,11 +359,16 @@ function PuzzleGame(puzzleWidth)
         
 
         var tempTile = this.puzzleBoard[row1][column1];
-        this.puzzleBoard[row1][column1] = this.puzzleBoard[row2][column2];
-        this.puzzleBoard[row1][column1].indexNumber = tempTile.indexNumber;
 
-        tempTile.indexNumber = this.puzzleBoard[row2][column2].indexNumber;
+        this.puzzleBoard[row1][column1] = this.puzzleBoard[row2][column2];
+        this.puzzleBoard[row1][column1].indexNumber = indexTile1;
+        this.puzzleBoard[row1][column1].row = row1;
+        this.puzzleBoard[row1][column1].col = column1;
+
         this.puzzleBoard[row2][column2] = tempTile;
+        this.puzzleBoard[row2][column2].row = row2;
+        this.puzzleBoard[row2][column2].col = column2;
+        this.puzzleBoard[row2][column2].indexNumber = indexTile2;
     };
 
     //This is for seeing if two tile states match
@@ -354,6 +392,8 @@ function PuzzleGame(puzzleWidth)
     this.getNeighboursIndicesArr = function(arrayIndex)
     {
         var neighbouringTiles = [];
+
+        //Top tile
         if((arrayIndex - this.puzzleWidth) > -1)
         {
             neighbouringTiles.push((arrayIndex - this.puzzleWidth));
@@ -363,6 +403,7 @@ function PuzzleGame(puzzleWidth)
             neighbouringTiles.push(-1);
         }
 
+        //Bottom Tile
         if((arrayIndex + this.puzzleWidth) < (this.puzzleWidth * this.puzzleWidth))
         {
             neighbouringTiles.push((arrayIndex + this.puzzleWidth));
@@ -372,7 +413,8 @@ function PuzzleGame(puzzleWidth)
             neighbouringTiles.push(-1);
         }
         
-        if(((arrayIndex + 1) % this.puzzleWidth) < (this.puzzleWidth - 1))
+        //Right Tile
+        if(((arrayIndex + 1) % this.puzzleWidth) > 0)
         {
             neighbouringTiles.push(arrayIndex + 1);
         }
@@ -381,7 +423,8 @@ function PuzzleGame(puzzleWidth)
             neighbouringTiles.push(-1);
         }
 
-        if(((arrayIndex - 1) % this.puzzleWidth) > -1)
+        //Left Tile
+        if(((arrayIndex - 1) % this.puzzleWidth) < (this.puzzleWidth - 1))
         {
             neighbouringTiles.push(arrayIndex - 1);
         }
@@ -413,21 +456,33 @@ function PuzzleGame(puzzleWidth)
         var neighbouringTiles = mainGame.getNeighboursIndicesArr(arrayIndex);
         var switched = false;
 
+        //Basically you go through the neighbours array and then find the corresponding index in the 2D puzzleBoard array
         for(var i = 0; i < neighbouringTiles.length; i++)
         {
-           if(neighbouringTiles[i].tileType == 0)
-           {
-               mainGame.swap2Tiles(arrayIndex, neighbouringTiles[i]);
-               mainGame.drawPuzzleBoard();
-               switched = true;
-               break;
-           }
+            for(var j = 0; j < mainGame.puzzleBoard.length; j++)
+            {
+                for(var k = 0; k < mainGame.puzzleBoard[j].length; k++)
+                {
+                    if((neighbouringTiles[i] == mainGame.puzzleBoard[j][k].indexNumber) && (mainGame.puzzleBoard[j][k].tileType == 0))
+                    {
+                        mainGame.swap2Tiles(arrayIndex, neighbouringTiles[i]);
+                        mainGame.drawPuzzleBoard();
+                        switched = true;
+                        //END GAME CONDITION
+                        if(mainGame.match2States(mainGame.goalState, mainGame.puzzleBoard))
+                        {
+                            util.playAudio(true);
+                            util.terminateGame("Success");
+                        }
+                        return;
+                    }
+                }
+            }
         }
 
         if(!switched)
         {
-            var beep = new Audio('./sounds/beep-07.mp3');
-            beep.play();
+            util.playAudio(false);
         }
     }
 }
