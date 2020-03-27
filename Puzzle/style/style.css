@@ -159,7 +159,7 @@ audio{
 }
 
 
-#checkerBoardId{
+#checkBoardId{
 
     float: left;
     width: 100%;
@@ -185,21 +185,32 @@ audio{
     width: 10px;
 }
 
-.puzzleBoard{
-
-    margin: 1px;
-    border-style: solid, black;
+#puzzleBoard{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-color: black;
     border-width: 3px; 
+    display: table;
+}
+
+.rowDiv
+{
+    display: table-row;
+    width: 100%;
 }
 
 
-.filledTile, .emptyTile{
-
+.filledTile, .emptyTile
+{
     text-align: center;
     display: table-cell;
     vertical-align: middle;
     background-color: #77B3ED;
-    border-style: 2px, solid, #404c50;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #404c50;
     color: white;
     font-weight: bold;
 }

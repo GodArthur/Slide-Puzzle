@@ -2,6 +2,7 @@
 
 var util;
 var pManager;
+var mainGame;
 
 //timer variable
 var t;
@@ -214,46 +215,122 @@ function Tile(row, col, tileType, indexNumber)
 }
 //PuzzleGame Object Constructor
 
-function PuzzleGame()
+function PuzzleGame(puzzleWidth)
 {
-    this.puzzleWidth;
+    this.puzzleWidth = puzzleWidth;
     this.puzzleBoard = [];
     this.goalState = [];
+
+    //Creates the state that you want to get to at the end of the game
     this.createGoalState = function()
     {
-        for(var i = 1; i < (this.puzzleWidth * this.puzzleWidth) - 1; i++)
+        //Tile number is used to track which tile is being added
+        var tileNumber = 1;
+        for(var i = 0; i < this.puzzleWidth; i++)
         {
-            this.goalState.push(i);
+            var tempArray = [];
+            for(var j = 0; j < this.puzzleWidth; j++)
+            {
+                tempArray.push(new Tile(i, j, tileNumber, (i * this.puzzleWidth) + j));
+            }
+            this.goalState.push(tempArray);
         }
-        this.goalState.push(0);
+        this.goalState[this.puzzleWidth - 1].push(new Tile(this.puzzleWidth, this.puzzleWidth, 0, (this.puzzleWidth * this.puzzleWidth) - 1));
     };
 
     //This is for setting the board structure for the game using random numbers
     this.createBoardStructure = function()
     {
-        for(var i = 0; i < (this.puzzleWidth * this.puzzleWidth); i++)
+        //Current tile tracks the tile the loop is on, usedNumbers tracks which numbers are used
+        var currentTile = 0;
+        var usedNumbers = [];
+        for(var i = 0; i < this.puzzleWidth; i++)
         {
-            var tempNum = utility.generateRandomNumber(0 , (this.puzzleWidth * this.puzzleWidth) - 1);
-            if(!puzzleBoard.contains(tempNum))
+            var tempArray = [];
+            for(var j = 0; j < this.puzzleWidth; j++)
             {
-                this.puzzleBoard.push(tempNum);
+                var tempNum = util.generateRandomNumber(0 , (this.puzzleWidth * this.puzzleWidth) - 1);
+                if(!usedNumbers.includes(tempNum))
+                {
+                    usedNumbers.push(tempNum);
+                    tempArray.push(new Tile(i, j, tempNum, currentTile));
+                    currentTile++;
+                }
+                else
+                {
+                    j--;
+                }
             }
-            else
-            {
-                i--;
-            }
+            this.puzzleBoard.push(tempArray);
+            
         }
     };
 
     //This is for drawing the game on the div
+    this.drawPuzzleBoard = function()
+    {
+        //Pretty much you have a div that you add all the created divs to
+        var mainDiv = document.createElement('div');
+        mainDiv.id = 'puzzleBoard';
+        for(var i = 0; i < this.puzzleBoard.length; i++)
+        {
+            var rowDiv = document.createElement('div');
+            rowDiv.classList.add("rowDiv");
+            for(var j = 0; j < this.puzzleBoard[i].length; j++)
+            {
+                var createdTile = document.createElement('div');
+                if(this.puzzleBoard[i][j].tileType != 0)
+                {
+                    createdTile.innerHTML = this.puzzleBoard[i][j].tileType;
+                    createdTile.classList.add("filledTile");
+                    createdTile.addEventListener("click", mainGame.processClickTile);
+                }
+                else
+                {
+                    createdTile.classList.add("emptyTile");
+                }
+                rowDiv.appendChild(createdTile);
+            }
+            mainDiv.appendChild(rowDiv);
+        }
 
+        document.getElementById('checkBoardId').innerHTML = '';
+        document.getElementById('checkBoardId').appendChild(mainDiv);
+    };
 
     //This is for swapping two tiles during the game
     this.swap2Tiles = function(indexTile1, indexTile2)
     {
-        var tempTile = this.puzzleBoard(indexTile1);
-        this.puzzleBoard(indexTile1) = this.puzzleBoard(indexTile2);
-        this.puzzleBoard(indexTile2) = tempTile;
+        var column1;
+        var row1;
+
+        var column2;
+        var row2;
+        
+        for(var i = 0; i < this.puzzleBoard.length; i++)
+        {
+            for(var j = 0; j < this.puzzleBoard[i].length; j++)
+            {
+                if(this.puzzleBoard[i][j].indexNumber == indexTile1)
+                {
+                    column1 = this.puzzleBoard[i][j].col;
+                    row1 = this.puzzleBoard[i][j].row;
+                }
+                else if(this.puzzleBoard[i][j].indexNumber == indexTile2)
+                {
+                    column2 = this.puzzleBoard[i][j].col;
+                    row2 = this.puzzleBoard[i][j].row;
+                }
+            }
+        }
+        
+
+        var tempTile = this.puzzleBoard[row1][column1];
+        this.puzzleBoard[row1][column1] = this.puzzleBoard[row2][column2];
+        this.puzzleBoard[row1][column1].indexNumber = tempTile.indexNumber;
+
+        tempTile.indexNumber = this.puzzleBoard[row2][column2].indexNumber;
+        this.puzzleBoard[row2][column2] = tempTile;
     };
 
     //This is for seeing if two tile states match
@@ -262,19 +339,96 @@ function PuzzleGame()
         var isSame = true;
         for(var i = 0; i < state1.length; i++)
         {
-            if(!(state1[i].indexNumber == state2[i].indexNumber))
+            for(var j = 0; j < state2.length; j++)
             {
-                isSame = false;
+                if(!(state1[i][j].tileType == state2[i][j].tileType))
+                {
+                    isSame = false;
+                }
             }
         }
         return isSame;
     };
 
     //This is for getting the neighbouring indices array
-    this.getNeighboursIndicesArr = function(arrayIndices)
+    this.getNeighboursIndicesArr = function(arrayIndex)
     {
         var neighbouringTiles = [];
-        //if(neighbouring )
+        if((arrayIndex - this.puzzleWidth) > -1)
+        {
+            neighbouringTiles.push((arrayIndex - this.puzzleWidth));
+        }
+        else
+        {
+            neighbouringTiles.push(-1);
+        }
+
+        if((arrayIndex + this.puzzleWidth) < (this.puzzleWidth * this.puzzleWidth))
+        {
+            neighbouringTiles.push((arrayIndex + this.puzzleWidth));
+        }
+        else
+        {
+            neighbouringTiles.push(-1);
+        }
+        
+        if(((arrayIndex + 1) % this.puzzleWidth) < (this.puzzleWidth - 1))
+        {
+            neighbouringTiles.push(arrayIndex + 1);
+        }
+        else
+        {
+            neighbouringTiles.push(-1);
+        }
+
+        if(((arrayIndex - 1) % this.puzzleWidth) > -1)
+        {
+            neighbouringTiles.push(arrayIndex - 1);
+        }
+        else
+        {
+            neighbouringTiles.push(-1);
+        }
+
+        return neighbouringTiles;
+    }
+
+    this.processClickTile = function()
+    {
+        //This is for getting the arrayIndex of the clicked tile
+        var value = event.currentTarget.innerHTML;
+        var arrayIndex;
+        for(var i = 0; i < mainGame.puzzleBoard.length; i++)
+        {
+            for(var j = 0; j < mainGame.puzzleBoard[i].length; j++)
+            {
+                if(mainGame.puzzleBoard[i][j].tileType == value)
+                {
+                    arrayIndex = mainGame.puzzleBoard[i][j].indexNumber;
+                }
+            }
+        }
+
+
+        var neighbouringTiles = mainGame.getNeighboursIndicesArr(arrayIndex);
+        var switched = false;
+
+        for(var i = 0; i < neighbouringTiles.length; i++)
+        {
+           if(neighbouringTiles[i].tileType == 0)
+           {
+               mainGame.swap2Tiles(arrayIndex, neighbouringTiles[i]);
+               mainGame.drawPuzzleBoard();
+               switched = true;
+               break;
+           }
+        }
+
+        if(!switched)
+        {
+            var beep = new Audio('./sounds/beep-07.mp3');
+            beep.play();
+        }
     }
 }
 
@@ -288,6 +442,11 @@ function mainProgram()
     document.getElementById("pDim").disabled = true;
 
     util.enableButton(document.getElementById("cancelBtn"), false, "red");
+    mainGame = new PuzzleGame(parseInt((document.getElementById('pDim').value)));
+    mainGame.createGoalState();
+    mainGame.createBoardStructure();
+    mainGame.drawPuzzleBoard();
+
     util.showChrono();
 }
 
