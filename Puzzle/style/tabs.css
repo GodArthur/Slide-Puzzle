@@ -3,9 +3,9 @@
 	width: 100%;
 }
 */
-.progressInput
+.progressInputs input, #progressLabels label
 {
-	width: 20%;
+	width: 25%;
 }
 
 #gameStats
