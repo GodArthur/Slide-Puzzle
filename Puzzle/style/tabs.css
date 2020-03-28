@@ -11,7 +11,12 @@
 #gameStats
 {
 	margin: 10px;
+<<<<<<< HEAD
 	position: relative;
+=======
+	width: 100%;
+	display: none;
+>>>>>>> 6224a740393268d09719f028949812fe94e2c1f5
 }
 
 

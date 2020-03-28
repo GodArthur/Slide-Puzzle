@@ -81,8 +81,12 @@ audio{
     
     background-color: white;
     height: 10%;
-    overflow: hidden; 
-    
+    position: relative;
+}
+
+#info{
+
+    background-color: gainsboro;
 }
 
 
@@ -131,8 +135,6 @@ audio{
 
 
 
-
-
 #middleSection{
     
     height: 100%;
@@ -169,13 +171,13 @@ audio{
 .tablinks{
 
     border: 0;
-    outline: none;
     cursor: pointer;
-    padding: 0;
+    padding: 15px;
     background-color: inherit;
     height: 100%;
     margin: 0;
-    
+    display: block;
+    float: left;
     
 }
 
