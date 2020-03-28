@@ -3,6 +3,7 @@
 var util;
 var pManager;
 var mainGame;
+var numMoves;
 
 //timer variable
 var t;
@@ -94,6 +95,7 @@ function Utility()
     this.cancelPuzzlePlay = function()
     {
         util.terminateGame("cancelled");
+        document.getElementById("checkBoardId").innerHTML = '';
     };
 
 
@@ -149,8 +151,41 @@ function Utility()
 
     this.showStats = function()
     {
+        document.getElementById('gameStats').innerHTML = '';
         //Not the actual functionality
         //Test purposes only
+        var table = document.createElement('table');
+        table.id = 'tableStats';
+        table.caption = 'Player Stats';
+
+        var hRow = table.insertRow(-1);
+        hRow.classList.add('hRow');
+
+        var index = document.createElement('th');
+        index.innerText = '#';
+        hRow.appendChild(index);
+
+        var name = document.createElement('th');
+        name.innerText = 'Name';
+        hRow.appendChild(name);
+
+        var dim = document.createElement('th');
+        dim.innerText = 'Dim';
+        hRow.appendChild(dim);
+
+        var status = document.createElement('th');
+        status.innerText = 'Status';
+        hRow.appendChild(status);
+
+        let moves = document.createElement('th');
+        moves.innerText = 'Moves';
+        hRow.appendChild(moves);
+
+        var duration = document.createElement('th');
+        duration.innerText = 'Dur(s)';
+        hRow.appendChild(duration);
+
+        document.getElementById('gameStats').append(table);
         for (i = 0; i < pManager.listPlayers.length; i++)
         {
             console.log(pManager.listPlayers[i].name);
@@ -206,6 +241,7 @@ function PlayerManager(gameCounter, gameDuration, nberMoves)
         this.gameDuration = duration;
         this.nberMoves = moves;
         this.listPlayers.push(p);
+        util.showStats();
     }
 }
 
@@ -237,7 +273,7 @@ function PuzzleGame(puzzleWidth)
             var tempArray = [];
             for(var j = 0; j < this.puzzleWidth; j++)
             {
-                if(tileNumber == 9)
+                if(tileNumber == (this.puzzleWidth * this.puzzleWidth))
                 {
                     tempArray.push(new Tile(this.puzzleWidth, this.puzzleWidth, 0, (this.puzzleWidth * this.puzzleWidth) - 1));
                 }
@@ -465,6 +501,8 @@ function PuzzleGame(puzzleWidth)
                 {
                     if((neighbouringTiles[i] == mainGame.puzzleBoard[j][k].indexNumber) && (mainGame.puzzleBoard[j][k].tileType == 0))
                     {
+                        numMoves++;
+                        document.getElementById('input1').value = numMoves;
                         mainGame.swap2Tiles(arrayIndex, neighbouringTiles[i]);
                         mainGame.drawPuzzleBoard();
                         switched = true;
@@ -472,6 +510,7 @@ function PuzzleGame(puzzleWidth)
                         if(mainGame.match2States(mainGame.goalState, mainGame.puzzleBoard))
                         {
                             util.playAudio(true);
+                            document.getElementById("checkBoardId").innerHTML = '';
                             util.terminateGame("Success");
                         }
                         return;
@@ -485,6 +524,7 @@ function PuzzleGame(puzzleWidth)
             util.playAudio(false);
         }
     }
+
 }
 
 
@@ -495,6 +535,7 @@ function mainProgram()
 {
     document.getElementById("pName").readOnly = true;
     document.getElementById("pDim").disabled = true;
+    document.getElementById("input1").value = 0;
 
     util.enableButton(document.getElementById("cancelBtn"), false, "red");
     mainGame = new PuzzleGame(parseInt((document.getElementById('pDim').value)));
@@ -503,6 +544,7 @@ function mainProgram()
     mainGame.drawPuzzleBoard();
 
     util.showChrono();
+    numMoves = 0;
 }
 
 
@@ -515,7 +557,7 @@ function init()
     document.getElementById("pDim").addEventListener('mouseup', util.checkFormFilled);
     document.getElementById("playBtn").addEventListener('click', mainProgram);
     document.getElementById("cancelBtn").addEventListener('click', util.cancelPuzzlePlay);
-    document.getElementById('middleSection').addEventListener('click', util.showStats);
+    //document.getElementById('middleSection').addEventListener('click', util.showStats);
 }
 
 

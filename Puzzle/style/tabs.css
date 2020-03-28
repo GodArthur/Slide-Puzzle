@@ -7,22 +7,24 @@
 {
 	width: 20%;
 }
-#playerInfo
-{
-	
-}
 
 #gameStats
 {
 	margin: 10px;
-	width: 100%;
+	position: relative;
 }
 
 
-table.tableStats
+#tableStats
 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
 	
+}
+
+.hRow
+{
+	background-color: green;
+	color: white;
 }
