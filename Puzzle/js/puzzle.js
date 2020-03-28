@@ -158,7 +158,8 @@ function Utility()
         //Test purposes only
         var table = document.createElement('table');
         table.id = 'tableStats';
-        table.caption = 'Player Stats';
+        caption = table.createCaption();
+        caption.innerHTML = 'Player Stats';
 
         var hRow = table.insertRow(-1);
         hRow.classList.add('hRow');
@@ -186,8 +187,39 @@ function Utility()
         var duration = document.createElement('th');
         duration.innerText = 'Dur(s)';
         hRow.appendChild(duration);
-
         document.getElementById('gameStats').append(table);
+
+        for(var i = 0; i < pManager.listPlayers.length; i++)
+        {
+            var dRow = table.insertRow(-1);
+            dRow.classList.add('dRow');
+
+            var tIndex = document.createElement('td');
+            tIndex.innerText = pManager.gameCounter;
+            dRow.appendChild(tIndex);
+
+            var tName = document.createElement('td');
+            tName.innerText = pManager.listPlayers[i].name;
+            dRow.appendChild(tName);
+
+            var tDim = document.createElement('td');
+            tDim.innerText = pManager.listPlayers[i].dimension;
+            dRow.appendChild(tDim);
+
+            var tStatus = document.createElement('td');
+            tStatus.innerText = pManager.listPlayers[i].theStatus;
+            dRow.appendChild(tStatus);
+
+            var tMoves = document.createElement('td');
+            tMoves.innerText = pManager.listPlayers[i].moves;
+            dRow.appendChild(tMoves);
+
+            var tDur = document.createElement('td');
+            tDur.innerText = pManager.listPlayers[i].duration;
+            dRow.appendChild(tDur);
+        }
+
+        /*
         for (i = 0; i < pManager.listPlayers.length; i++)
         {
             console.log(pManager.listPlayers[i].name);
@@ -195,6 +227,7 @@ function Utility()
             console.log(pManager.listPlayers[i].duration);
             console.log(pManager.listPlayers[i].moves);
         }
+        */
     };
 
 
@@ -555,7 +588,7 @@ function mainProgram()
 function init()
 {
     util = new Utility();
-    pManager = new PlayerManager(0, 0, 0);
+    pManager = new PlayerManager(-1, 0, 0);
 
     document.getElementById("pName").addEventListener('blur', util.checkFormFilled);
     document.getElementById("pDim").addEventListener('mouseup', util.checkFormFilled);
