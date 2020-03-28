@@ -87,6 +87,8 @@ function Utility()
         util.enableButton(document.querySelector("#cancelBtn"), true, "#F0F0F0");
         document.querySelector("#pName").readOnly = false;
         document.querySelector("#pDim").disabled = false;
+
+        util.showStats(theStatus);
     };
 
 
@@ -495,6 +497,8 @@ function mainProgram()
 {
     document.getElementById("pName").readOnly = true;
     document.getElementById("pDim").disabled = true;
+
+    document.getElementById("playBtn").disabled = true;
 
     util.enableButton(document.getElementById("cancelBtn"), false, "red");
     mainGame = new PuzzleGame(parseInt((document.getElementById('pDim').value)));
