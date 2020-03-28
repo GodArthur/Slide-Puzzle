@@ -20,11 +20,28 @@
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
+	text-align: center;
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
 	
+}
+
+.hRow th, .dRow td
+{
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
 }
 
 .hRow
 {
 	background-color: green;
 	color: white;
+}
+
+.dRow
+{
+	background-color: white;
+	color: black;
 }
