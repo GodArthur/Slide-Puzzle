@@ -195,7 +195,7 @@ function Utility()
             dRow.classList.add('dRow');
 
             var tIndex = document.createElement('td');
-            tIndex.innerText = pManager.gameCounter;
+            tIndex.innerText = i;
             dRow.appendChild(tIndex);
 
             var tName = document.createElement('td');
@@ -332,7 +332,7 @@ function PuzzleGame(puzzleWidth)
     this.createBoardStructure = function()
     {
         //This is the functioning board Structure
-        /*
+        
         //Current tile tracks the tile the loop is on, usedNumbers tracks which numbers are used
         var currentTile = 0;
         var usedNumbers = [];
@@ -356,7 +356,7 @@ function PuzzleGame(puzzleWidth)
             this.puzzleBoard.push(tempArray);
             
         }
-        */
+        /*
        //For testing purposes only
        var testArray = util.sampleEasyBoardTests(3);
        var indexFlag = 0;
@@ -370,6 +370,7 @@ function PuzzleGame(puzzleWidth)
            }
            this.puzzleBoard.push(tempArray);
        }
+       */
     };
 
     //This is for drawing the game on the div
@@ -395,6 +396,7 @@ function PuzzleGame(puzzleWidth)
                 {
                     createdTile.classList.add("emptyTile");
                 }
+                createdTile.style.width = (100 / this.puzzleWidth) + "%";
                 rowDiv.appendChild(createdTile);
             }
             mainDiv.appendChild(rowDiv);
