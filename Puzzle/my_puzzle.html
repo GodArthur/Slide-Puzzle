@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <link type="text/css" rel="stylesheet" href="style/style.css">
+        <link type="text/css" rel="stylesheet" href="style/tabs.css">
+        <script type="text/javascript" src="js/puzzle.js" defer></script>
+        <script type="text/javascript" src="js/tabs.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                My Puzzle Game
+            </h1>
+        </header>
+        <section id = "gameContent">
+            <section id="leftSection">
+                <!-- Tab Links -->
+                <div id = "tab">
+                    <button id="info" class="tablinks"> Player Info </button>
+                    <button id="stats" class="tablinks"> Game Stats </button>
+                </div>
+                <!-- Tab content -->
+                <div id="playerInfo">
+                    
+                    <form>
+                        <h3>Game Setup</h3>
+
+                        <section id="setupSection">
+
+                                <fieldset id="infoForm">
+
+                                    <legend>Game Info/Settings</legend>
+                                    <section>
+                                        <div id = "labels" class="playerInputs">
+                                            <label for="pName">Player Name</label>
+                                            <label for="pDim">Puzzle Dimension</label>
+                                            <!--<br>-->
+                                        </div>
+                                        <div id="boxes" class="playerInputs">
+                                            
+                                            
+                                            <input type="text" id="pName" name="pName" placeholder="Enter Name">
+                                            <select id="pDim">
+                                                <option value = "">Select</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                           
+                                        </div>
+                                        <br>
+                                        
+                                        <div id = "buttons">
+                                        <button type = 'button' id="playBtn" disabled>Play Now</button>
+                                        <button type = 'button' id="cancelBtn" disabled>Cancel Now</button>
+                                        </div>
+                                    </section>
+
+                                </fieldset>
+
+                                <fieldset id="progressForm">
+                                    <legend>Game Progress</legend>
+                                    <section id = "progressContainer">
+                                        <div id= "movesDiv" class = "progressDiv">
+                                            <label class = "progressLabels" for="moves">Moves</label>
+                                            <input id = "input1" type="text" name="moves" id="moves">
+                                        </div>
+                                        <div class = "progressDiv">
+                                            <label class="progressLabels" for="sec">Sec</label>
+                                            <input id = "input2" type="text" name="sec" id="sec">
+                                        </div>
+                                        <div class = "progressDiv">
+                                            <label class = "progressLabels" for="min">Min</label>
+                                            <input id = "input3" type="text" name="min" id="min">
+                                        </div>
+                                        <div class="progressDiv">
+                                            <label class = "progressLabels" for="hrs">Hrs</label>
+                                            <input id = "input4" type="text" name="hrs" id="hrs">
+                                        </div>
+                                    </section>
+                                </fieldset>
+
+                        </section>
+
+                        <label for="Game Progress"></label>
+
+
+                    </form>
+
+                </div>
+
+                <div id="gameStats">
+
+                    <table id="tableStats">
+                        <caption>Player Stats</caption>
+                        <tr class="hRow">
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Dim</th>
+                            <th>Status</th>
+                            <th>Moves</th>
+                            <th>Dur(s)</th>
+                        </tr>
+
+
+                    </table>
+
+                </div>
+
+            </section>
+         
+
+            <section id="middleSection">
+
+                <audio id="wrongMove">
+                    <source src="sounds/beep-07.mp3" type="audio/mpeg"/>
+                </audio>
+                
+                <audio id="winMove">
+                    <source src ="sounds/Firework.mp3" type="audio/mpeg"/>
+                </audio>
+
+                <div id="checkBoardId">
+
+                </div>
+            </section>
+        </section>
+        <footer>
+            <p>
+                Copyright © 2020 Andrzej Fedorowicz and Korjon Chang-Jones
+            </p>
+        </footer>
+    </body>
+</html>

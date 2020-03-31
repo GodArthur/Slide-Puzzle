@@ -1,0 +1,279 @@
+*{
+    padding: 0px;
+    margin: 0px;
+	box-sizing: border-box;
+	position: relative;
+}
+body, html{
+
+    height: 100%;
+    width: 100%;
+}
+
+header, footer{
+
+    height: 15%;
+    background-color: #aed6f1; 
+    border-style: solid;
+    border-color:  #d7bde2;
+
+}
+
+
+footer > p{
+
+    text-align: center;
+
+    top: 50%;
+}
+
+h1{
+    
+    position: absolute;
+    right: 40%;
+    bottom: 30%;
+}
+
+header{
+    position: relative;
+}
+
+legend{
+
+    font-size: 1.2em;
+    color: #09384e;
+    font-weight: bold;
+}
+
+label{
+    width: 40%;
+    margin: 2px;
+}
+form{
+    padding-top: 10px;
+    margin: 10px;
+    height: 100%;
+}
+
+
+audio{
+
+    display: none;
+}
+
+#gameContent{
+    
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+	width: 100%;
+}
+
+#leftSection, #middleSection{
+    
+    border-style: solid;
+    border-color: darkcyan;
+    border: 2px; 
+    height: 100%;
+}
+
+#leftSection{
+    background-color:  #aed6f1;
+    width: 30%;
+    border-style: solid;
+    border-color:  #424949 ;
+    border-bottom-width: 6px;
+	position: relative;
+}
+
+#tab{
+    
+    background-color: white;
+    height: 10%;
+    position: relative;
+}
+
+#info{
+
+    background-color: gainsboro;
+}
+
+
+
+#playerInfo{
+
+    height: 65%;
+}
+
+#setupSection{
+
+    height: 100%;
+}
+
+#playBtn, #cancelBtn{
+
+    display: inline-block;
+    height: 50px;
+    width: 130px;
+    border: none;
+    text-align: center;
+    background-color: "gray";
+    margin-top: 5px;
+}
+
+#playBtn{
+
+    margin-left: 10px;
+}
+
+
+#infoForm{
+
+    height: 45%;
+}
+#progressForm{
+
+    height: 40%;
+}
+#progressContainer{
+
+    height: 100%;  width: 100%;  
+}
+
+#input1, #input2, #input3, #input4{
+
+   
+    width: 60%;
+    display:block;
+}
+
+
+
+#middleSection{
+    
+    height: 100%;
+    width: 70%;
+}
+
+#greenButton{
+
+    background-color: #4CAF50;
+}
+
+#blueButton{
+    
+    background-color: #008CBA;
+}
+#redButton{
+    
+    background-color: #f44336;
+}
+
+#disabledButton{
+    
+    background-color: #e7e7e7;   
+}
+
+
+#checkBoardId{
+
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.tablinks{
+
+    border: 0;
+    cursor: pointer;
+    padding: 15px;
+    background-color: inherit;
+    height: 100%;
+    margin: 0;
+    display: block;
+    float: left;
+    
+}
+
+.playerInputs{
+    
+    
+    float: left;
+    width: 40%;
+    
+    
+}
+
+
+.playerInputs label{
+
+    display: block;
+    width: 100%;
+    padding-top: 2px;
+}
+
+.playerInputs input{
+    margin-top: 2px;
+}
+
+.playerInputs > input + select{
+
+    display: block;
+    margin-top: 8px;
+}
+
+#buttons{
+
+    clear: both;
+}
+
+.progressDiv{
+
+   float: left;
+   width: 25%; 
+   top: 27%;
+   padding-left: 5%;
+}
+
+
+
+.progressLabels{
+
+    display: block;
+}
+
+#puzzleBoard{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px; 
+    display: table;
+}
+
+.rowDiv
+{
+    display: table-row;
+    width: 100%;
+}
+
+
+.filledTile, .emptyTile
+{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #77B3ED;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #404c50;
+    color: white;
+    font-weight: bold;
+}
+
+.emptyTile{
+
+    background-color: #afd9ec;
+    color: #afd9ec;
+}
