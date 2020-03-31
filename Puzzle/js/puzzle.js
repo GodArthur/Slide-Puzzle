@@ -217,6 +217,8 @@ function Utility()
             var tDur = document.createElement('td');
             tDur.innerText = pManager.listPlayers[i].duration;
             dRow.appendChild(tDur);
+            
+            
         }
 
         /*

@@ -19,11 +19,19 @@ header, footer{
 
 }
 
+
+footer > p{
+
+    text-align: center;
+
+    top: 50%;
+}
+
 h1{
     
     position: absolute;
     right: 40%;
-    bottom: 0%;
+    bottom: 30%;
 }
 
 header{
@@ -46,6 +54,7 @@ form{
     margin: 10px;
     height: 100%;
 }
+
 
 audio{
 
@@ -93,7 +102,7 @@ audio{
 
 #playerInfo{
 
-    height: 60%;
+    height: 65%;
 }
 
 #setupSection{
@@ -104,33 +113,38 @@ audio{
 #playBtn, #cancelBtn{
 
     display: inline-block;
-    height: 45px;
-    width: 120px;
+    height: 50px;
+    width: 130px;
     border: none;
     text-align: center;
     background-color: "gray";
+    margin-top: 5px;
+}
+
+#playBtn{
+
+    margin-left: 10px;
 }
 
 
 #infoForm{
 
-    height: 40%;
+    height: 45%;
 }
 #progressForm{
 
-    height: 30%;
+    height: 40%;
 }
 #progressContainer{
 
-    height: 100%;    
+    height: 100%;  width: 100%;  
 }
 
 #input1, #input2, #input3, #input4{
 
-    display: inline-block;
-    width: 10%;
-    margin-left: 20px;
-    
+   
+    width: 60%;
+    display:block;
 }
 
 
@@ -181,10 +195,51 @@ audio{
     
 }
 
-.progressInput{
+.playerInputs{
+    
+    
+    float: left;
+    width: 40%;
+    
+    
+}
 
-    margin: 5px;
-    width: 10px;
+
+.playerInputs label{
+
+    display: block;
+    width: 100%;
+    padding-top: 2px;
+}
+
+.playerInputs input{
+    margin-top: 2px;
+}
+
+.playerInputs > input + select{
+
+    display: block;
+    margin-top: 8px;
+}
+
+#buttons{
+
+    clear: both;
+}
+
+.progressDiv{
+
+   float: left;
+   width: 25%; 
+   top: 27%;
+   padding-left: 5%;
+}
+
+
+
+.progressLabels{
+
+    display: block;
 }
 
 #puzzleBoard{
