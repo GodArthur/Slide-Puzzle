@@ -31,20 +31,29 @@
 
                                     <legend>Game Info/Settings</legend>
                                     <section>
-                                        <label for="pName">Player Name</label>
-                                        <input type="text" id="pName" name="pName" placeholder="Enter Name">
-                                        <br><label for="pDim">Puzzle Dimension</label>
-                                        
-                                        <select id="pDim">
-                                            <option value = "">Select</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-
-                                        </select>
+                                        <div id = "labels" class="playerInputs">
+                                            <label for="pName">Player Name</label>
+                                            <label for="pDim">Puzzle Dimension</label>
+                                            <!--<br>-->
+                                        </div>
+                                        <div id="boxes" class="playerInputs">
+                                            
+                                            
+                                            <input type="text" id="pName" name="pName" placeholder="Enter Name">
+                                            <select id="pDim">
+                                                <option value = "">Select</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                           
+                                        </div>
                                         <br>
+                                        
+                                        <div id = "buttons">
                                         <button type = 'button' id="playBtn" disabled>Play Now</button>
                                         <button type = 'button' id="cancelBtn" disabled>Cancel Now</button>
+                                        </div>
                                     </section>
 
                                 </fieldset>
@@ -52,16 +61,20 @@
                                 <fieldset id="progressForm">
                                     <legend>Game Progress</legend>
                                     <section id = "progressContainer">
-                                        <div id = "progressLabels">
-                                            <label for="moves">Moves</label>
-                                            <label for="sec">Sec</label>
-                                            <label for="min">Min</label>
-                                            <label for="hrs">Hrs</label>
-                                        </div>
-                                        <div id = "progressInputs">
+                                        <div id= "movesDiv" class = "progressDiv">
+                                            <label class = "progressLabels" for="moves">Moves</label>
                                             <input id = "input1" type="text" name="moves" id="moves">
+                                        </div>
+                                        <div class = "progressDiv">
+                                            <label class="progressLabels" for="sec">Sec</label>
                                             <input id = "input2" type="text" name="sec" id="sec">
+                                        </div>
+                                        <div class = "progressDiv">
+                                            <label class = "progressLabels" for="min">Min</label>
                                             <input id = "input3" type="text" name="min" id="min">
+                                        </div>
+                                        <div class="progressDiv">
+                                            <label class = "progressLabels" for="hrs">Hrs</label>
                                             <input id = "input4" type="text" name="hrs" id="hrs">
                                         </div>
                                     </section>
@@ -114,7 +127,7 @@
         </section>
         <footer>
             <p>
-                Copyright 2020 Fed and Kojo
+                Copyright © 2020 Andrzej Fedorowicz and Korjon Chang-Jones
             </p>
         </footer>
     </body>
